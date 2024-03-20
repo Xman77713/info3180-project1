@@ -6,7 +6,8 @@ This file contains the routes for your application.
 """
 
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
+from forms import AddNewProperty
 
 
 ###
@@ -28,6 +29,14 @@ def about():
 ###
 # The functions below should be applicable to all Flask apps.
 ###
+
+@app.route('/properties/create', methods=['GET', 'POST'])
+def create_property():
+    """Render the new properties page"""
+    form = AddNewProperty()
+    if form.validate_on_submit():
+            
+    return render_template('new_property.html', name="Adding Properties")
 
 # Display Flask WTF errors as Flash messages
 def flash_errors(form):
